@@ -1,0 +1,672 @@
+/* --- ESTILOS PARA EL AVATAR EN EL HEADER --- */
+
+.logo-container {
+    display: flex; /* Permite alinear el avatar y el texto horizontalmente */
+    align-items: center; /* Centra verticalmente la imagen con el texto */
+}
+
+.profile-avatar {
+    width: 40px; /* Tamaño del avatar */
+    height: 40px;
+    border-radius: 50%; /* Hace que la imagen sea perfectamente circular */
+    object-fit: cover; /* Asegura que la imagen no se distorsione */
+    margin-right: 10px; /* Espacio entre la imagen y el nombre */
+    border: 2px solid #3498db; /* Pequeño borde de color de marca */
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Sombra sutil */
+}
+
+/* Ajuste del logo para que el texto se vea bien */
+.navbar .logo {
+    margin: 0;
+}
+
+/* Base y Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9; /* Fondo claro */
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+/* Header y Navegación */
+.main-header {
+    background: #2c3e50; /* Azul oscuro para el encabezado */
+    color: #fff;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background 0.3s;
+}
+
+.navbar ul li a:hover {
+    background: #34495e; /* Un poco más claro al pasar el ratón */
+    border-radius: 5px;
+}
+
+/* Sección Principal / Sobre Mí (Hero) */
+
+.hero-section {
+    background: #ecf0f1; 
+    padding: 80px 0; /* Un poco menos de padding para que la foto no sea demasiado grande */
+    text-align: left; /* Alineamos el texto a la izquierda en lugar de centrarlo */
+    border-bottom: 3px solid #3498db; 
+}
+
+/* Contenedor que crea las dos columnas */
+.hero-content {
+    display: flex;
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 50px; /* Espacio entre la imagen y el texto */
+}
+
+.hero-image-column {
+    flex: 1; /* Ocupa 1 parte del espacio (para la foto) */
+}
+
+.hero-section {
+    background: #ecf0f1; /* Gris muy claro para la sección de bienvenida */
+    padding: 100px 0;
+    text-align: center;
+    border-bottom: 3px solid #3498db; /* Línea de color de marca */
+}
+.profile-hero-image {
+    width: 50%; /* La imagen ocupa todo el ancho de su columna */
+    max-width: 200px; /* Tamaño máximo para que no se vea gigantesca */
+    height: 200px;
+    border-radius: 100%; /* ¡La hace completamente redonda! */
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
+    border: 5px solid #3498db; /* Borde blanco alrededor */
+}
+
+.profile-info h2 {
+    color: #3498db; /* Azul de marca */
+    font-size: 3em;
+    margin-bottom: 5px;
+}
+
+.profile-info h3 {
+    color: #7f8c8d;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    max-width: 700px;
+    margin: 20px auto 30px;
+    font-size: 1.1em;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+}
+
+/* Secciones de Contenido (Skills, Experiencia, Educación) */
+section {
+    padding: 60px 0;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    color: #2c3e50;
+}
+
+/* Skills */
+/* --- ESTILOS PARA LA SECCIÓN DE HABILIDADES (EN FILA/COLUMNAS) --- */
+.skills-section {
+    background-color: #fff;
+    padding: 60px 0;
+    text-align: center; /* Centra el título H2 */
+}
+
+/* Contenedor Flex para alinear las dos columnas principales (Técnicas y Blandas) */
+.skills-container-wrapper {
+    display: flex;
+    gap: 30px; /* Espacio entre las dos columnas */
+    align-items: flex-start; /* Alinea las columnas arriba si tienen diferente altura */
+    text-align: left; /* Alinea el contenido de las columnas a la izquierda */
+}
+
+/* Contenedor para la columna de Habilidades Técnicas (3/4 del ancho) */
+.technical-skills-column {
+    flex: 3; /* Ocupa 3 partes del espacio */
+    padding: 20px;
+    border-right: 2px solid #ddd; /* Separador visual */
+}
+
+/* Contenedor para la columna de Habilidades Blandas (1/4 del ancho) */
+.soft-skills-column {
+    flex: 1; /* Ocupa 1 parte del espacio */
+    padding: 20px;
+}
+
+.skills-group h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* Estilo de los bloques de habilidades técnicas (Lenguajes, BD, Frameworks) */
+.tech-skills, .soft-skills ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permite que las habilidades salten a la siguiente línea */
+    justify-content: flex-start; /* Alinea las habilidades a la izquierda */
+    margin-bottom: 20px; /* Espacio entre los grupos */
+}
+
+.tech-skills li, .soft-skills li {
+    background: #3498db;
+    color: #fff;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+/* Media Query para móvil: apilar las columnas */
+@media (max-width: 768px) {
+    .skills-container-wrapper {
+        flex-direction: column; /* Apila las columnas verticalmente */
+    }
+    .technical-skills-column {
+        border-right: none;
+        border-bottom: 2px solid #ddd; /* Separador en la parte inferior */
+        margin-bottom: 20px;
+    }
+    .tech-skills, .soft-skills ul {
+        justify-content: center; /* Vuelve a centrar en móvil para mejor legibilidad */
+    }
+}
+
+
+
+/*Experiencia y Educación */
+.job-entry, .edu-entry {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-left: 5px solid #3498db;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.job-entry h3, .edu-entry h3 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.job-entry h4, .edu-entry h4 {
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.job-entry ul {
+    margin-left: 20px;
+}
+
+.job-entry li {
+    margin-bottom: 8px;
+}
+
+/* Footer / Contacto */
+.contact-footer {
+    background: #2c3e50;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.contact-footer h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.contact-links a {
+    color: #3498db;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.contact-links a:hover {
+    color: #ecf0f1;
+}
+
+/* Media Queries (para hacerlo más responsive) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    .navbar ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .navbar ul li a {
+        padding: 5px 10px;
+    }
+    
+    .skills-group {
+        width: 100%;
+        display: block;
+        margin: 10px 0;
+    }
+
+    .container {
+        width: 90%;
+    }
+}
+
+
+
+
+/* --- ESTILOS PARA LA SECCIÓN DE PROYECTOS (RULETA/CARRUSEL) --- */
+
+.projects-section {
+    padding: 60px 0;
+    background-color: #ecf0f1; 
+}
+
+/* Contenedor principal que permite el scroll horizontal */
+.projects-carousel {
+    display: flex;
+    overflow-x: scroll; /* Habilita el scroll horizontal */
+    scroll-snap-type: x mandatory; /* Habilita el efecto 'snap' (anclaje) */
+    gap: 20px; /* Espacio entre las tarjetas */
+    padding-bottom: 20px; 
+    
+    /* Ocultar la barra de scroll para un diseño más limpio */
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Regla para ocultar la barra de scroll en navegadores WebKit (Chrome, Safari, Edge) */
+.projects-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Tarjeta individual del proyecto */
+.project-card {
+    flex-shrink: 0; 
+    width: 85%; /* En móvil, ocupa el 85% para que se vea un pedazo de la siguiente */
+    max-width: 400px; 
+    
+    scroll-snap-align: start; /* La tarjeta se ancla al inicio de la vista */
+    
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.2s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-image {
+    width: 100%; 
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: cover; 
+    border-radius: 6px; 
+    margin-bottom: 20px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+/* Ajustes para pantallas grandes (muestra más de una tarjeta a la vez) */
+@media (min-width: 768px) {
+    .project-card {
+        width: calc(33.33% - 13.33px); /* Muestra 3 tarjetas, teniendo en cuenta el gap de 20px */
+        max-width: none;
+    }
+}
+
+
+/* --- ESTILOS PARA LOS BOTONES DE NAVEGACIÓN --- */
+
+.carousel-wrapper {
+    position: relative; 
+    margin: 0 auto;
+    /* Ajusta el ancho para que los botones queden a los lados del carrusel visible */
+    max-width: calc(100% - 80px); 
+}
+
+.carousel-nav-btn {
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 99, 197, 0.8); 
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1.5em;
+    line-height: 1;
+    border-radius: 50%; 
+    transition: background 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-nav-btn:hover {
+    background: #4da1d9; 
+}
+
+.left-btn {
+    left: -45px; /* Posiciona el botón fuera del contenedor de contenido principal */
+}
+
+.right-btn {
+    right: -45px; /* Posiciona el botón fuera del contenedor de contenido principal */
+}
+
+/* Ocultar botones en móvil (usarán el gesto de deslizar) */
+@media (max-width: 768px) {
+    .left-btn, .right-btn {
+        display: none; 
+    }
+    .carousel-wrapper {
+        max-width: 100%; /* Ocupa todo el ancho disponible */
+    }
+}
+
+
+
+
+/* --- ESTILOS ADICIONALES PARA EL FORMULARIO DE CONTACTO --- */
+
+.contact-form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    color: #333;
+}
+
+.form-note {
+    font-size: 0.85em;
+    color: #95a5a6; /* Gris claro */
+    margin-top: 10px;
+    text-align: center;
+}
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto 30px; /* Centra el formulario */
+    padding: 20px;
+    background: #34495e; /* Un tono más oscuro que el fondo del footer */
+    border-radius: 8px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ecf0f1; /* Letra blanca */
+}
+
+.contact-form input[type="text"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    color: #333;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Permite al usuario redimensionar verticalmente */
+}
+
+/* Reutilizamos el botón primario */
+.contact-form .btn-primary {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    border: none;
+}
+
+.separator-text {
+    margin: 20px 0;
+    font-size: 1.1em;
+    color: #bdc3c7;
+    border-top: 1px solid #34495e;
+    padding-top: 20px;
+}
+
+.contact-links a {
+    /* Mantenemos los estilos de los enlaces del footer */
+    font-size: 1em; 
+    padding: 5px 10px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+}
+
+.contact-links a:hover {
+    background: #3498db;
+    color: #fff;
+}
+
+
+/* Estilo para el mensaje de confirmación (usado en el JS) */
+.form-submission-status {
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #34495e; /* Fondo del footer más oscuro */
+}
+
+/* --- ESTILOS PARA LOS ICONOS DE CONTACTO (REDONDOS Y CON EFECTO HOVER) --- */
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 20px; /* Aumentamos el espacio para que los círculos no se peguen */
+    margin-top: 20px;
+}
+
+.contact-links a {
+    /* Estilos base para el círculo */
+    width: 50px; /* Ancho fijo */
+    height: 50px; /* Altura fija */
+    background-color: #ffffff; /* Azul base */
+    color: #000000;
+    text-decoration: none;
+    
+    /* Para centrar el icono */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 50%; /* ¡HACE EL ENLACE REDONDO! */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra para dar profundidad */
+    transition: all 0.4s ease; /* Transición suave para el efecto de hover */
+    
+    /* Ocultamos el texto dentro del enlace, solo mostramos el icono */
+    font-size: 0; 
+}
+
+/* Estilo específico para el icono (la etiqueta <i>) */
+.contact-links a i {
+    font-size: 1.5em; /* Tamaño del icono */
+    margin: 0; /* Eliminamos el margen para que esté centrado */
+}
+
+/* EFECTO HOVER (Cambio de color y escala) */
+.contact-links a:hover {
+    background: #e74c3c; 
+    transform: scale(1.1); 
+    transform: translateY(-10px);
+}
+
+.contact-links a[aria-label="WhatsApp"]:hover {
+   /* background-color: #25D366   ;*/
+    background: linear-gradient(
+        50deg,
+        #DCF8C6 ,  
+        #25D366 ,  
+        #075E54    
+    ); 
+    
+}
+
+
+.contact-links a[aria-label="LinkedIn"]:hover {
+    background-color: #0077b5; 
+    background-image: url("redes/Link.png");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(1.1);
+    transform: translateY(-10px);
+}
+.contact-links a[aria-label="LinkedIn"]:hover img {
+    opacity: 0;
+}
+
+.contact-links a[aria-label="Gmail"]:hover {
+     background-color: var(--cyan-accent);
+     color: #2d2b2b;
+}
+
+.contact-links a[aria-label="GitHub"]:hover {
+
+    background-color: #000000;
+    background-image: url("redes/githbub.png");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(1.1);
+    transform: translateY(-10px);
+}
+.contact-links a[aria-label="GitHub"]:hover img {
+    opacity: 0;
+}
+
+
+.contact-links a[aria-label="Instagram"] {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.contact-links a[aria-label="Instagram"]::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.contact-links a[aria-label="Instagram"]:hover::before {
+    opacity: 1;
+}
+
+.contact-links a[aria-label="Instagram"]:hover img {
+    filter: brightness(0) invert(1);
+    z-index: 2;
+    position: relative;
+}
+
+.contact-links a[aria-label="Instagram"]:hover {
+    transform: scale(1.1);
+    background-image: url("redes/insta2.ico");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateY(-10px);
+}
+
+
+
+/* --- NUEVO ESTILO PARA LA IMAGEN --- */
+
+.contact-icon-img {
+    width: 25px; 
+    height: 25px;
+
+}
+
+
+.contact-links a i {
+    display: none; 
+}
+
