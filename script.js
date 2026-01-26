@@ -12,31 +12,57 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const scrollAmount = projectCard.offsetWidth + 20;
+    const getScrollAmount = () => {
+        // Recalcula el ancho de la tarjeta en cada llamada para manejar el redimensionamiento de la ventana.
+        const card = document.querySelector('.project-card');
+        if (card) {
+            return card.offsetWidth + 20; // 20 es el 'gap' definido en CSS.
+        }
+        return 300; // Un valor de respaldo.
+    };
+
+    let autoScrollInterval;
+
+    const scrollRight = () => {
+        // Si está al final, vuelve al principio.
+        if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1) {
+            carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+        }
+    };
+
+    const startAutoScroll = () => {
+        stopAutoScroll();
+        autoScrollInterval = setInterval(scrollRight, 3000); // Cambia cada 3 segundos
+    };
+
+    const stopAutoScroll = () => {
+        clearInterval(autoScrollInterval);
+    };
 
     leftBtn.addEventListener('click', () => {
-        carousel.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
+        // Si está al principio, se desplaza hasta el final para un efecto circular.
+        if (carousel.scrollLeft < 1) {
+            carousel.scrollTo({ left: carousel.scrollWidth, behavior: 'smooth' });
+        } else {
+            carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        }
+        startAutoScroll(); // Reinicia el temporizador al hacer clic
     });
 
     rightBtn.addEventListener('click', () => {
-        carousel.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
+        scrollRight();
+        startAutoScroll(); // Reinicia el temporizador al hacer clic
     });
 
-    // Actualizar scroll amount cuando cambia el tamaño de la ventana
-    window.addEventListener('resize', () => {
-        const newScrollAmount = projectCard.offsetWidth + 20;
-        // Guardamos el nuevo valor para futuros clicks
-        if (leftBtn && rightBtn) {
-            leftBtn.dataset.scrollAmount = newScrollAmount;
-            rightBtn.dataset.scrollAmount = newScrollAmount;
-        }
-    });
+    // Iniciar el carrusel automático
+    startAutoScroll();
+
+    // Pausar el carrusel cuando el mouse está sobre él para que el usuario pueda interactuar
+    const carouselWrapper = document.querySelector('.carousel-wrapper');
+    carouselWrapper.addEventListener('mouseenter', stopAutoScroll);
+    carouselWrapper.addEventListener('mouseleave', startAutoScroll);
 });
 
 // ============================================
@@ -144,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
-                const headerOffset = 80;
+                const headerOffset = window.innerWidth <= 768 ? 70 : 0;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -286,18 +312,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 statusMessage.textContent = "✅ ¡Gracias! Tu mensaje ha sido enviado correctamente. Te responderé pronto.";
-                statusMessage.style.color = '#2ecc71';
+                statusMessage.style.color = '#9ece6a';
                 form.reset();
                 // Limpiar todos los errores
                 form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
                 form.querySelectorAll('.error-message').forEach(el => el.remove());
             } else {
                 statusMessage.textContent = "❌ Error al enviar el mensaje. Por favor, inténtalo de nuevo o usa mis redes sociales.";
-                statusMessage.style.color = '#e74c3c';
+                statusMessage.style.color = '#f7768e';
             }
         } catch (error) {
             statusMessage.textContent = "❌ Error de conexión. Por favor, verifica tu conexión o usa mis redes sociales.";
-            statusMessage.style.color = '#e74c3c';
+            statusMessage.style.color = '#f7768e';
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
@@ -311,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // EFECTO DE HIGHLIGHT EN NAVEGACIÓN AL SCROLL
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('section[id], footer[id], .contact-footer[id]');
     const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
 
     function highlightNav() {
@@ -319,13 +345,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollY = window.pageYOffset;
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
+            const offset = window.innerWidth <= 768 ? 100 : 0;
+            const sectionTop = section.offsetTop - offset;
             const sectionHeight = section.offsetHeight;
             
             if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
             }
         });
+
+        // Corrección: Si estamos al final de la página, activar el último enlace (Contacto)
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            const lastLink = navLinks[navLinks.length - 1];
+            if (lastLink) {
+                const href = lastLink.getAttribute('href');
+                if (href) current = href.substring(1);
+            }
+        }
 
         navLinks.forEach(link => {
             link.classList.remove('active');
@@ -337,4 +373,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', highlightNav);
     highlightNav(); // Llamar una vez al cargar
+});
+
+// ============================================
+// CARRUSEL DE EDUCACIÓN (AUTO SCROLL + MOUSE WHEEL)
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const eduCarousel = document.querySelector('.education-carousel');
+    const eduLeftBtn = document.querySelector('.edu-left-btn');
+    const eduRightBtn = document.querySelector('.edu-right-btn');
+    if (!eduCarousel) return;
+
+    let eduInterval;
+
+    const scrollEduRight = () => {
+        const cardWidth = eduCarousel.querySelector('.edu-entry').offsetWidth + 20; // 20 = gap
+        
+        // Si llegamos al final, volvemos al principio
+        if (eduCarousel.scrollLeft + eduCarousel.clientWidth >= eduCarousel.scrollWidth - 5) {
+            eduCarousel.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            eduCarousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+    };
+
+    const startEduScroll = () => {
+        stopEduScroll();
+        eduInterval = setInterval(scrollEduRight, 2000); // 3 segundos (más rápido)
+    };
+
+    const stopEduScroll = () => {
+        clearInterval(eduInterval);
+    };
+
+    // Soporte para Mouse Wheel (Scroll horizontal con rueda del mouse)
+    eduCarousel.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        eduCarousel.scrollLeft += e.deltaY;
+        stopEduScroll(); // Pausar auto-scroll al interactuar
+    });
+
+    eduCarousel.addEventListener('mouseenter', stopEduScroll);
+    eduCarousel.addEventListener('mouseleave', startEduScroll);
+
+    // Event listeners para los botones
+    if (eduLeftBtn) {
+        eduLeftBtn.addEventListener('click', () => {
+            const cardWidth = eduCarousel.querySelector('.edu-entry').offsetWidth + 20;
+            eduCarousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            startEduScroll(); // Reiniciar timer
+        });
+    }
+
+    if (eduRightBtn) {
+        eduRightBtn.addEventListener('click', () => {
+            scrollEduRight();
+            startEduScroll(); // Reiniciar timer
+        });
+    }
+
+    startEduScroll();
 });

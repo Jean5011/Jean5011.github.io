@@ -2,16 +2,19 @@
 
 .logo-container {
     display: flex; /* Permite alinear el avatar y el texto horizontalmente */
+    flex-direction: column;
     align-items: center; /* Centra verticalmente la imagen con el texto */
+    margin-bottom: 30px;
 }
 
 .profile-avatar {
-    width: 40px; /* Tamaño del avatar */
-    height: 40px;
+    width: 100px; /* Tamaño del avatar */
+    height: 100px;
     border-radius: 50%; /* Hace que la imagen sea perfectamente circular */
     object-fit: cover; /* Asegura que la imagen no se distorsione */
-    margin-right: 10px; /* Espacio entre la imagen y el nombre */
-    border: 2px solid #3498db; /* Pequeño borde de color de marca */
+    margin-right: 0;
+    margin-bottom: 15px;
+    border: 2px solid #7aa2f7; /* Pequeño borde de color de marca */
     box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Sombra sutil */
 }
 
@@ -30,8 +33,9 @@
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f9; /* Fondo claro */
-    color: #333;
+    background-color: #1a1b26; /* Fondo claro */
+    color: #c0caf5;
+    padding-left: 250px; /* Espacio para la barra lateral */
   scroll-behavior: smooth;
 }
 
@@ -40,13 +44,13 @@ section h2 {
     text-align: center;
     margin-bottom: 40px;
     font-size: 2.5em;
-    color: #2c3e50;
+    color: #7aa2f7;
     font-weight: 700;
 }
 
 /* Smooth scroll mejorado */
 html {
-    scroll-padding-top: 80px;
+    /* scroll-padding-top ya no es necesario con la barra lateral en escritorio */
 }
 
 .container {
@@ -59,42 +63,49 @@ html {
 
 /* Header y Navegación */
 .main-header {
-    background: #2c3e50; /* Azul oscuro para el encabezado */
-    color: #fff;
-    padding: 15px 0;
-    position: sticky;
+    background: #16161e; /* Azul oscuro para el encabezado */
+    color: #c0caf5;
+    padding: 30px 0;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    width: 90%;
-    margin: auto;
+    height: 100%;
+    width: 100%;
 }
 
 .logo {
-    font-size: 1.8em;
+    font-size: 1.5em; /* Reducido para mejor ajuste en la barra lateral */
     font-weight: 700;
-    display: flex;
-    align-items: center;
+    text-align: center;
 }
 
 .navbar ul {
     list-style: none;
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .navbar ul li a {
-    color: #fff;
+    color: #c0caf5;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 15px 10px;
     display: block;
     transition: all 0.3s ease;
     position: relative;
+    text-align: center;
 }
 
 .navbar ul li a::after {
@@ -104,7 +115,7 @@ html {
     left: 50%;
     width: 0;
     height: 2px;
-    background: #3498db;
+    background: #7aa2f7;
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
@@ -115,13 +126,34 @@ html {
 }
 
 .navbar ul li a:hover {
-    background: #34495e;
+    background: #24283b;
     border-radius: 5px;
-    color: #3498db;
+    color: #7aa2f7;
 }
 
 .navbar ul li a.active {
-    color: #3498db;
+    color: #7aa2f7;
+}
+
+/* --- ICONOS ADAPTADOS AL NAVBAR (SIDEBAR) --- */
+.main-header .contact-links {
+    margin-top: auto; /* Empuja los iconos al final del sidebar */
+    margin-bottom: 30px;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.main-header .contact-links a {
+    width: 35px;
+    height: 35px;
+    background: #bcdaf8;
+    border: 1px solid #7aa2f7;
+    box-shadow: none;
+}
+
+.main-header .contact-links a img {
+    width: 18px;
+    height: 18px;
 }
 
 /* Menú hamburguesa */
@@ -138,7 +170,7 @@ html {
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background: #fff;
+    background: #c0caf5;
     margin: 3px 0;
     transition: all 0.3s ease;
     border-radius: 2px;
@@ -158,10 +190,10 @@ html {
 
 /* Sección Principal / Sobre Mí (Hero) */
 .hero-section {
-    background: #f0f8ff; /* Gris muy claro para la sección de bienvenida */
+    background: #1a1b26; /* Gris muy claro para la sección de bienvenida */
     padding: 100px 0;
     text-align: center;
-    border-bottom: 3px solid #3498db; /* Línea de color de marca */
+    border-bottom: 3px solid #7aa2f7; /* Línea de color de marca */
 }
 
 /* Contenedor dentro de hero-section con layout de dos columnas */
@@ -169,7 +201,7 @@ html {
     display: flex;
     align-items: center; /* Centra los elementos verticalmente */
     gap: 50px; /* Espacio entre la imagen y el texto */
-    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: center; /* Alinea el texto al centro */
 }
 
 .hero-image-column {
@@ -191,20 +223,20 @@ html {
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
     object-position: center; /* Centra la imagen dentro del círculo */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra para resaltar */
-    border: 5px solid #3498db; /* Borde azul alrededor */
+    border: 5px solid #7aa2f7; /* Borde azul alrededor */
     display: block; /* Asegura que se comporte como bloque */
     margin: 0 auto; /* Centra la imagen */
 }
 /* Alineando los textos a la izquierda */
 .profile-info h2 {
-    color: #3498db; /* Azul de marca */
+    color: #7aa2f7; /* Azul de marca */
     font-size: 3em;
     margin-bottom: 5px;
 }
 
 
 .profile-info h3 {
-    color: #7f8c8d;
+    color: #dce2fa;
     font-size: 1.5em;
     margin-bottom: 20px;
 }
@@ -217,8 +249,8 @@ html {
 
 .btn-primary {
     display: inline-block;
-    background: #3498db;
-    color: #fff;
+    background: #7aa2f7;
+    color: #1a1b26;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
@@ -226,7 +258,8 @@ html {
 }
 
 .btn-primary:hover {
-    background: #2980b9;
+    background: #3d59a1;
+    color: #fff;
 }
 
 /* Secciones de Contenido (Skills, Experiencia, Educación) */
@@ -239,7 +272,7 @@ section {
 /* Skills */
 /* --- ESTILOS PARA LA SECCIÓN DE HABILIDADES (EN FILA/COLUMNAS) --- */
 .skills-section {
-    background-color: #fff;
+    background: linear-gradient(180deg, #1a1b26 0%, #16161e 100%);
     padding: 60px 0;
     text-align: center; /* Centra el título H2 */
 }
@@ -249,27 +282,35 @@ section {
     display: flex;
     gap: 30px; /* Espacio entre las dos columnas */
     align-items: flex-start; /* Alinea las columnas arriba si tienen diferente altura */
-    text-align: left; /* Alinea el contenido de las columnas a la izquierda */
 }
 
 /* Contenedor para la columna de Habilidades Técnicas (3/4 del ancho) */
 .technical-skills-column {
     flex: 3; /* Ocupa 3 partes del espacio */
-    padding: 20px;
-    border-right: 2px solid #ddd; /* Separador visual */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 /* Contenedor para la columna de Habilidades Blandas (1/4 del ancho) */
 .soft-skills-column {
     flex: 1; /* Ocupa 1 parte del espacio */
-    padding: 20px;
+}
+
+.skills-group {
+    background: #24283b;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-left: 4px solid #bb9af7;
+    text-align: left;
 }
 
 .skills-group h3 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
+    color: #bb9af7;
+    margin-bottom: 20px;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 /* Estilo de los bloques de habilidades técnicas (Lenguajes, BD, Frameworks) */
@@ -279,17 +320,25 @@ section {
     display: flex;
     flex-wrap: wrap; /* Permite que las habilidades salten a la siguiente línea */
     justify-content: flex-start; /* Alinea las habilidades a la izquierda */
-    margin-bottom: 20px; /* Espacio entre los grupos */
 }
 
 .tech-skills li, .soft-skills li {
-    background: #3498db;
+    background: #3d59a1;
     color: #fff;
     padding: 8px 15px;
     margin: 5px;
     border-radius: 20px;
     font-size: 0.9em;
     font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: default;
+}
+
+.tech-skills li:hover, .soft-skills li:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 4px 10px rgba(187, 154, 247, 0.3);
+    background-color: #563d7c;
 }
 
 /* Media Query para móvil: apilar las columnas */
@@ -298,8 +347,6 @@ section {
         flex-direction: column; /* Apila las columnas verticalmente */
     }
     .technical-skills-column {
-        border-right: none;
-        border-bottom: 2px solid #ddd; /* Separador en la parte inferior */
         margin-bottom: 20px;
     }
     .tech-skills, .soft-skills ul {
@@ -309,23 +356,41 @@ section {
 
 
 
-/*Experiencia y Educación */
-.job-entry, .edu-entry {
-    background: #fff;
+/* Experiencia y Educación */
+.experience-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.job-entry {
+    background: #24283b;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    flex: 1 1 320px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.edu-entry {
+    background: #24283b;
     padding: 20px;
     margin-bottom: 25px;
-    border-left: 5px solid #3498db;
+    border-left: 5px solid #7aa2f7;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     border-radius: 4px;
 }
 
 .job-entry h3, .edu-entry h3 {
-    color: #2c3e50;
+    color: #7dcfff;
     margin-bottom: 5px;
 }
 
 .job-entry h4, .edu-entry h4 {
-    color: #7f8c8d;
+    color: #9aa5ce;
     font-style: italic;
     margin-bottom: 15px;
 }
@@ -338,21 +403,50 @@ section {
     margin-bottom: 8px;
 }
 
+/* --- CARRUSEL DE EDUCACIÓN --- */
+.education-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.education-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.education-carousel .edu-entry {
+    flex-shrink: 0;
+    width: 85%;
+    max-width: 400px;
+    scroll-snap-align: start;
+    margin-bottom: 0; /* Eliminamos el margen inferior ya que ahora es horizontal */
+}
+
+@media (min-width: 768px) {
+    .education-carousel .edu-entry {
+        width: calc(33.33% - 13.33px);
+    }
+}
+
 /* Footer / Contacto */
 .contact-footer {
-    background: #2c3e50;
-    color: #fff;
-    padding: 40px 0;
+    background: #16161e;
+    color: #c0caf5;
+    padding: 100px 0;
     text-align: center;
 }
 
 .contact-footer h2 {
-    color: #fff;
+    color: #c0caf5;
     margin-bottom: 20px;
 }
 
 .contact-links a {
-    color: #3498db;
+    color: #7aa2f7;
     text-decoration: none;
     margin: 0 15px;
     font-size: 1.1em;
@@ -372,7 +466,7 @@ section {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: #3498db;
+    background: #7aa2f7;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -394,7 +488,7 @@ section {
 }
 
 .scroll-to-top:hover {
-    background: #2980b9;
+    background: #3d59a1;
     transform: translateY(-5px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
@@ -422,12 +516,12 @@ section {
    ============================================ */
 .contact-form input.error,
 .contact-form textarea.error {
-    border: 2px solid #e74c3c;
-    background-color: #ffeaea;
+    border: 2px solid #f7768e;
+    background-color: #2e202e;
 }
 
 .error-message {
-    color: #e74c3c;
+    color: #f7768e;
     font-size: 0.85em;
     margin-top: 5px;
     display: block;
@@ -449,7 +543,12 @@ section {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.job-entry:hover, .edu-entry:hover {
+.job-entry:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.edu-entry:hover {
     transform: translateX(5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -480,15 +579,49 @@ section {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+    box-shadow: 0 6px 16px rgba(122, 162, 247, 0.4);
 }
 
 /* ============================================
    MEDIA QUERIES (RESPONSIVE)
    ============================================ */
 @media (max-width: 768px) {
+    body {
+        padding-left: 0;
+    }
+
+    html {
+        scroll-padding-top: 70px;
+    }
+
+    .main-header {
+        width: 100%;
+        height: 70px;
+        padding: 0 15px;
+        position: sticky;
+        flex-direction: row;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        align-items: center;
+    }
+
     .navbar {
-        position: relative;
+        position: static;
+        flex-direction: row;
+        justify-content: space-between;
+        height: auto;
+        width: 100%;
+    }
+
+    .logo-container {
+        flex-direction: row;
+        margin-bottom: 0;
+    }
+
+    .profile-avatar {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 0;
+        margin-right: 10px;
     }
     
     .menu-toggle {
@@ -496,16 +629,18 @@ section {
     }
     
     .nav-menu {
+        display: flex;
         position: fixed;
         top: 70px;
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background: #2c3e50;
+        background: #16161e;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         padding-top: 50px;
+        margin-top: 0;
         transition: left 0.3s ease;
         z-index: 1000;
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
@@ -530,6 +665,10 @@ section {
     
     .navbar ul {
         margin-top: 0;
+    }
+    
+    .navbar .contact-links {
+        display: none; /* Ocultar iconos del header en móvil */
     }
     
     .skills-group {
@@ -575,7 +714,7 @@ section {
 
 .projects-section {
     padding: 60px 0;
-    background-color: #ecf0f1; 
+    background-color: #16161e; 
 }
 
 /* Contenedor principal que permite el scroll horizontal */
@@ -598,24 +737,41 @@ section {
 
 /* Tarjeta individual del proyecto */
 .project-card {
-    flex-shrink: 0; 
+    flex-shrink: 0;
     width: 85%; /* En móvil, ocupa el 85% para que se vea un pedazo de la siguiente */
     max-width: 400px; 
     
     scroll-snap-align: start; /* La tarjeta se ancla al inicio de la vista */
     
-    background: #ffffff;
+    background: #24283b;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
-    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para la elevación */
+    transform: scale(1); /* Asegura que la tarjeta no esté escalada por defecto */
 }
 
+/* Efecto de elevación y sombra sutil al pasar el cursor sobre las tarjetas del carrusel. */
 .project-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajuste para el estado activo (resaltado) */
+.project-card:focus, /* Para accesibilidad con teclado */
+.project-card:active {
+    /* Misma elevación que el hover para consistencia */
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .project-image {
+
+}
+
+/*Ajustes a la imagen*/
+.project-image {
+
     width: 100%; 
     height: 200px; /* Altura fija para todas las imágenes */
     object-fit: cover; 
@@ -623,6 +779,33 @@ section {
     margin-bottom: 20px; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
 }
+/* Estilos para el contenedor de enlaces en la tarjeta de proyecto */
+.project-links {
+    margin-top: 20px;
+    text-align: center; /* Mantenido por si flex no es soportado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Estilos para hacer más visibles los enlaces de las tarjetas */
+.project-links a {
+    text-decoration: none;
+}
+
+.project-links a p {
+    color: #ffffff; /* Blanco para mayor contraste */
+    font-weight: bold;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+
+.project-links a:hover p {
+    color: #7aa2f7; /* Color de acento al pasar el cursor */
+}
+
+
 
 /* Ajustes para pantallas grandes (muestra más de una tarjeta a la vez) */
 @media (min-width: 768px) {
@@ -647,7 +830,7 @@ section {
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    background: rgba(0, 99, 197, 0.8); 
+    background: rgba(122, 162, 247, 0.8); 
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -660,7 +843,7 @@ section {
 }
 
 .carousel-nav-btn:hover {
-    background: #4da1d9; 
+    background: #3d59a1; 
 }
 
 .left-btn {
@@ -692,19 +875,19 @@ section {
     border: 2px solid transparent;
     border-radius: 4px;
     font-size: 1em;
-    color: #333;
+    color: #c0caf5;
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .contact-form input[type="email"]:focus {
     outline: none;
-    border-color: #3498db;
-    background-color: #fff;
+    border-color: #7aa2f7;
+    background-color: #1a1b26;
 }
 
 .form-note {
     font-size: 0.85em;
-    color: #95a5a6; /* Gris claro */
+    color: #565f89; /* Gris claro */
     margin-top: 10px;
     text-align: center;
 }
@@ -712,7 +895,7 @@ section {
     max-width: 500px;
     margin: 0 auto 30px; /* Centra el formulario */
     padding: 20px;
-    background: #34495e; /* Un tono más oscuro que el fondo del footer */
+    background: #24283b; /* Un tono más oscuro que el fondo del footer */
     border-radius: 8px;
     text-align: left;
 }
@@ -725,7 +908,7 @@ section {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #ecf0f1; /* Letra blanca */
+    color: #c0caf5; /* Letra blanca */
 }
 
 .contact-form input[type="text"],
@@ -735,15 +918,15 @@ section {
     border: 2px solid transparent;
     border-radius: 4px;
     font-size: 1em;
-    color: #333;
+    color: #c0caf5;
     transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .contact-form input[type="text"]:focus,
 .contact-form textarea:focus {
     outline: none;
-    border-color: #3498db;
-    background-color: #fff;
+    border-color: #7aa2f7;
+    background-color: #1a1b26;
 }
 
 .contact-form textarea {
@@ -763,8 +946,8 @@ section {
 .separator-text {
     margin: 20px 0;
     font-size: 1.1em;
-    color: #bdc3c7;
-    border-top: 1px solid #34495e;
+    color: #565f89;
+    border-top: 1px solid #414868;
     padding-top: 20px;
 }
 
@@ -772,12 +955,12 @@ section {
     /* Mantenemos los estilos de los enlaces del footer */
     font-size: 1em; 
     padding: 5px 10px;
-    border: 1px solid #3498db;
+    border: 1px solid #7aa2f7;
     border-radius: 5px;
 }
 
 .contact-links a:hover {
-    background: #3498db;
+    background: #7aa2f7;
     color: #fff;
 }
 
@@ -787,7 +970,7 @@ section {
     font-weight: bold;
     padding: 10px;
     border-radius: 4px;
-    background-color: #34495e; /* Fondo del footer más oscuro */
+    background-color: #24283b; /* Fondo del footer más oscuro */
 }
 
 /* --- ESTILOS PARA LOS ICONOS DE CONTACTO (REDONDOS Y CON EFECTO HOVER) --- */
@@ -804,8 +987,8 @@ section {
     /* Estilos base para el círculo */
     width: 50px; /* Ancho fijo */
     height: 50px; /* Altura fija */
-    background-color: #ffffff; /* Azul base */
-    color: #000000;
+    background-color: #c0caf5; /* Azul base */
+    color: #1a1b26;
     text-decoration: none;
     
     /* Para centrar el icono */
@@ -921,6 +1104,15 @@ section {
     transform: translateY(-10px);
 }
 
+/* --- ESTILO PARA EL PIE DE PÁGINA FINAL --- */
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid #414868;
+    font-size: 0.9em;
+    color: #9aa5ce;
+}
+
 
 
 /* --- NUEVO ESTILO PARA LA IMAGEN --- */
@@ -934,4 +1126,20 @@ section {
 
 .contact-links a i {
     display: none; 
+}
+
+/* Estilos para el enlace "Ver más" */
+.ver-mas-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #7aa2f7; /* Color de acento */
+    color: #1a1b26;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.ver-mas-link:hover {
+    background-color: #3d59a1;
+    color: #fff;
 }
