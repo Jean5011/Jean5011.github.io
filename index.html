@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Jean Pierre Esquen - Programador Full Stack. Especializado en C#, Java, JavaScript, Python y bases de datos. Explora mis proyectos y experiencia.">
+    <meta name="keywords" content="programador, full stack, desarrollador, C#, Java, JavaScript, Python, portfolio, desarrollador web">
+    <meta name="author" content="Jean Pierre Esquen">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jean Pierre Esquen - Portfolio | Programador Full Stack">
+    <meta property="og:description" content="Portfolio profesional de Jean Pierre Esquen. Programador Full Stack especializado en desarrollo web y aplicaciones.">
+    <meta property="og:image" content="sobre mi/perfil.jpeg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jean Pierre Esquen - Portfolio">
+    <meta name="twitter:description" content="Programador Full Stack especializado en desarrollo web y aplicaciones.">
+    
     <link rel="icon" type="image/x-icon" href="proyectos/profo.png">
-    <title>Jean Pierre Esquen - Portfolio</title>
+    <title>Jean Pierre Esquen - Portfolio | Programador Full Stack</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJqgL/C5R882R2gM2F9R4sI60Qc9uQ2qG+G2j7F9+77w2y0H7R+60z8/E8+5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,21 +27,31 @@
 <body>
 
     <header class="main-header">
-        <nav class="navbar">
+        <nav class="navbar" role="navigation" aria-label="Navegación principal">
             <div class="logo-container">
-                <img src="sobre mi/perfil.jpeg" alt="Foto de perfil de Jean Pierre" class="profile-avatar">
+                <img src="sobre mi/perfil.jpeg" alt="Foto de perfil de Jean Pierre Esquen" class="profile-avatar">
                 <h1 class="logo">Jean Pierre Esquen</h1>
             </div>
-            <ul>
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li> 
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experiencia">Experiencia</a></li>
-                <li><a href="#educacion">Educación</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+            <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#sobre-mi" aria-label="Ir a sección sobre mí">Sobre mí</a></li>
+                <li><a href="#proyectos" aria-label="Ir a sección proyectos">Proyectos</a></li> 
+                <li><a href="#skills" aria-label="Ir a sección skills">Skills</a></li>
+                <li><a href="#experiencia" aria-label="Ir a sección experiencia">Experiencia</a></li>
+                <li><a href="#educacion" aria-label="Ir a sección educación">Educación</a></li>
+                <li><a href="#contacto" aria-label="Ir a sección contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
+    
+    <!-- Botón para volver arriba -->
+    <button class="scroll-to-top" aria-label="Volver arriba" title="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <section id="sobre-mi" class="hero-section">
         <div class="container">
@@ -35,7 +60,7 @@
             </div>
             <div class="profile-info">
                 <h2>Jean Pierre Esquen</h2>
-                <h3>Programador Full Stack</h3>
+                <h3>Software Developer | Tec. en Programación</h3>
                 <p>
                     Soy técnico en programación y futuro licenciado en Ciencias de Datos. Me motivan los retos y disfruto formar parte de proyectos diversos, ya que considero que cada experiencia representa una oportunidad de aprendizaje. 
                     Poseo conocimientos en distintos lenguajes y áreas del desarrollo.
@@ -157,7 +182,7 @@
                         <img src="proyectos/Tienda_de_mascotas.png" alt="Imagen del Proyecto 3" class="project-image">
                         <h3>Tienda de mascotas</h3>
                         <p class="project-desc">
-                            Proyecto web universitario grupal en cuan es gestiona las ventas, productos, clientes y empleados de una tienda de mascotas. 
+                            Proyecto web universitario grupal en el cual se gestionan las ventas, productos, clientes y empleados de una tienda de mascotas. 
                             Mi contribución se centró en implementar las operaciones CRUD completas para las secciones de Productos y Clientes, además crear la base de datos. 
                         </p>
                         <br>
@@ -172,7 +197,7 @@
                         <img src="proyectos/Banco.png" alt="Imagen del Proyecto 4" class="project-image">
                         <h3>Proyecto banco</h3>
                         <p class="project-desc">
-                            Poyecto web universitario grupal de un sistema de bancos. 
+                            Proyecto web universitario grupal de un sistema de bancos. 
                             Participé en el desarrollo de un proyecto universitario donde colaboré activamente en la creación de la base de datos, 
                             la implementación de los CRUD para la gestión de clientes y el diseño de diversas interfaces de usuario.
                         </p>
@@ -185,7 +210,7 @@
                     </div>
     
                     <div class="project-card">
-                        <img src="/proyectos/j_serpiente.png" alt="Imagen del Proyecto 5" class="project-image">
+                        <img src="proyectos/j_serpiente.png" alt="Imagen del Proyecto 5" class="project-image">
                         <h3>Juego de la serpiente</h3>
                         <p class="project-desc">
                             Desarrollé el clásico juego de la serpiente para repasar y fortalecer mis conocimientos fundamentales de programación. 
@@ -203,7 +228,7 @@
                         <img src="proyectos/concecionario.jpg" alt="Imagen del Proyecto 6" class="project-image">
                         <h3>Concesionario</h3>
                         <p class="project-desc">
-                            Poyecto web universitario grupal de un sistema de una consesionaria. Incluye el ingreso y visualización de datos de clientes y empleados y registro de ventas. 
+                            Proyecto web universitario grupal de un sistema de una consesionaria. Incluye el ingreso y visualización de datos de clientes y empleados y registro de ventas. 
                             Este proyecto representó mi primera inmersión en el mundo de la programación, donde aprendí y apliqué algoritmos fundamentales y los principios de la programación orientada a objetos.
                         </p>
                         <br>
@@ -251,7 +276,7 @@
 
             <div class="job-entry">
                 <h3>Encargado de Despacho de Repuestos de Celulares</h3>
-                <h4>Tienda mayorista: Arsat | Agosto 2023 - Marzo 2023</h4>
+                <h4>Tienda mayorista: Arsat | Agosto 2022 - Marzo 2023</h4>
                 <ul>
                     <li>Optimicé la logística de despacho y la gestión de inventario, asegurando la precisión en el control de stock y la entrega puntual de repuestos de celulares.</li>
                 </ul>
@@ -285,10 +310,10 @@
             </div>
 
             <div class="edu-entry">
-                <h3>Secundiario en Bachillerato en enconomia</h3>
-                <h4>Escuela de Comercio No. 15 D.E 15 "Dra.Cecilia Grierson" | marzo 2014 - Diciembre 2021</h4>
-                <p>Tipo: Secundiario</p>
-                <p>Aprendizaje: secundario y enconomia.</p>
+                <h3>Secundario en Bachillerato en Economía</h3>
+                <h4>Escuela de Comercio No. 15 D.E 15 "Dra.Cecilia Grierson" | Marzo 2014 - Diciembre 2021</h4>
+                <p>Tipo: Secundario</p>
+                <p>Aprendizaje: Secundario y Economía.</p>
             </div>
         </div>
     </section>
@@ -327,7 +352,7 @@
                     <img src="redes/wss.png" alt="Icono de WhatsApp" class="contact-icon-img">
                 </a>
                 
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jeanpierreesquen@gmail.com.com&su=Asunto&body=Mensaje" target="_blank" aria-label="Gmail">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jeanpierreesquen@gmail.com&su=Asunto&body=Mensaje" target="_blank" aria-label="Gmail">
                     <img src="redes/gmail.png" alt="Icono de Gmail" class="contact-icon-img">
                 </a>
                 
