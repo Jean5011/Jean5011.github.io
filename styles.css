@@ -135,25 +135,39 @@ html {
     color: #7aa2f7;
 }
 
+/* Etiqueta sobre los iconos del sidebar */
+.sidebar-contact-label {
+    margin-top: auto;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #c0caf5;
+    font-weight: bold;
+}
+
 /* --- ICONOS ADAPTADOS AL NAVBAR (SIDEBAR) --- */
 .main-header .contact-links {
-    margin-top: auto; /* Empuja los iconos al final del sidebar */
+    margin-top: 0;
     margin-bottom: 30px;
-    gap: 10px;
+    gap: 5px;
     padding: 0 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .main-header .contact-links a {
-    width: 35px;
-    height: 35px;
-    background: #bcdaf8;
-    border: 1px solid #7aa2f7;
-    box-shadow: none;
+    width: 30px;
+    height: 30px;
+    background: #c0caf5;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0;
 }
 
 .main-header .contact-links a img {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 }
 
 /* Menú hamburguesa */
@@ -670,6 +684,10 @@ section {
     .navbar .contact-links {
         display: none; /* Ocultar iconos del header en móvil */
     }
+
+    .sidebar-contact-label {
+        display: none;
+    }
     
     .skills-group {
         width: 100%;
@@ -1012,9 +1030,8 @@ section {
 
 /* EFECTO HOVER (Cambio de color y escala) */
 .contact-links a:hover {
-    background: #e74c3c; 
-    transform: scale(1.1); 
-    transform: translateY(-10px);
+    background: #e74c3c;
+    transform: translateY(-10px) scale(1.1);
 }
 
 .contact-links a[aria-label="WhatsApp"]:hover {
