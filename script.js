@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const startAutoScroll = () => {
         stopAutoScroll();
-        autoScrollInterval = setInterval(scrollRight, 3000); // Cambia cada 3 segundos
+        autoScrollInterval = setInterval(scrollRight, 5000); // Cambia cada 3 segundos
     };
 
     const stopAutoScroll = () => {
@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const startEduScroll = () => {
         stopEduScroll();
-        eduInterval = setInterval(scrollEduRight, 2000); // 3 segundos (más rápido)
+        eduInterval = setInterval(scrollEduRight, 4000); // 3 segundos (más rápido)
     };
 
     const stopEduScroll = () => {
