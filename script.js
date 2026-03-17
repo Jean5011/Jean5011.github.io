@@ -1,7 +1,29 @@
 // ============================================
+// CARGA DINÁMICA DE COMPONENTES HTML
+// ============================================
+document.addEventListener('DOMContentLoaded', async () => {
+    const includes = document.querySelectorAll('[data-include]');
+    for (let el of includes) {
+        const file = el.getAttribute('data-include');
+        try {
+            const response = await fetch(file);
+            if (response.ok) {
+                el.innerHTML = await response.text();
+            } else {
+                console.error(`Error cargando componente: ${file}`);
+            }
+        } catch (error) {
+            console.error(`Error de red al cargar ${file}:`, error);
+        }
+    }
+    // Una vez que todos los componentes están en el DOM, disparamos un evento.
+    document.dispatchEvent(new Event('componentsLoaded'));
+});
+
+// ============================================
 // FUNCIONALIDAD DEL CARRUSEL DE PROYECTOS
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const carousel = document.querySelector('.projects-carousel');
     const leftBtn = document.querySelector('.left-btn');
     const rightBtn = document.querySelector('.right-btn');
@@ -68,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // MENÚ HAMBURGUESA PARA MÓVILES
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
@@ -107,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // BOTÓN SCROLL TO TOP
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const scrollToTopBtn = document.querySelector('.scroll-to-top');
     
     if (!scrollToTopBtn) return;
@@ -133,33 +155,51 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // ANIMACIONES AL HACER SCROLL (Intersection Observer)
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
+    let delayCounter = 0;
+    let resetTimer = null;
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
+                // Configurar animación en cascada
+                setTimeout(() => {
+                    entry.target.classList.add('fade-in');
+                }, delayCounter);
+                
+                delayCounter += 150; // Incrementar delay para el siguiente (Staggered Effect)
                 observer.unobserve(entry.target);
+
+                // Resetear el contador de retrasos cuando el hilo de ejecución actual finalice
+                clearTimeout(resetTimer);
+                resetTimer = setTimeout(() => {
+                    delayCounter = 0;
+                }, 500);
             }
         });
     }, observerOptions);
 
-    // Observar elementos que deben animarse
+    // Observar elementos que deben animarse interactuando
     const animateElements = document.querySelectorAll(
         '.job-entry, .edu-entry, .project-card, .skills-group, .profile-info'
     );
     
-    animateElements.forEach(el => observer.observe(el));
+    // Configuración inicial de elementos: opacidad a 0 para no saltar brusco
+    animateElements.forEach(el => {
+        el.style.opacity = '0';
+        observer.observe(el);
+    });
 });
 
 // ============================================
 // NAVEGACIÓN SUAVE MEJORADA
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const links = document.querySelectorAll('a[href^="#"]');
     
     links.forEach(link => {
@@ -186,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // VALIDACIÓN Y ENVÍO DE FORMULARIO MEJORADO
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const form = document.querySelector('.contact-form');
     if (!form) return;
 
@@ -336,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // EFECTO DE HIGHLIGHT EN NAVEGACIÓN AL SCROLL
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const sections = document.querySelectorAll('section[id], footer[id], .contact-footer[id]');
     const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
 
@@ -378,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 // CARRUSEL DE EDUCACIÓN (AUTO SCROLL + MOUSE WHEEL)
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('componentsLoaded', () => {
     const eduCarousel = document.querySelector('.education-carousel');
     const eduLeftBtn = document.querySelector('.edu-left-btn');
     const eduRightBtn = document.querySelector('.edu-right-btn');
@@ -434,3 +474,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startEduScroll();
 });
+
+// ============================================
+// FUNCIONALIDAD BOTONES "LEER MÁS" EN EXPERIENCIA
+// ============================================
+document.addEventListener('componentsLoaded', () => {
+    // Usamos delegación de eventos al document, pero solo asignamos una vez
+    // Esto es útil porque los elementos se inyectan dinámicamente
+    document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.read-more-btn');
+        if (!btn) return;
+        
+        const jobEntry = btn.closest('.job-entry');
+        if (!jobEntry) return;
+
+        const list = jobEntry.querySelector('.experience-list');
+        if (!list) return;
+
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        
+        if (isExpanded) {
+            // Colapsar
+            list.classList.add('collapsed');
+            btn.innerHTML = 'Leer más <i class="fas fa-chevron-down"></i>';
+            btn.setAttribute('aria-expanded', 'false');
+        } else {
+            // Expandir
+            list.classList.remove('collapsed');
+            btn.innerHTML = 'Leer menos <i class="fas fa-chevron-up"></i>';
+            btn.setAttribute('aria-expanded', 'true');
+        }
+    });
+});
+
